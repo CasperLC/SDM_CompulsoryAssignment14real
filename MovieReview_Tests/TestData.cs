@@ -6,10 +6,15 @@ namespace MovieReview_Tests
 {
     public class TestData
     {
-        public static List<MovieReview> MovieReviews { get; set; }
+        public List<MovieReview> MovieReviews { get; set; }
 
+        public TestData()
+        {
+            InitializeTestData();
+        }
 
-        public static void InitializeTestData()
+        //Initialize 20 MovieReview objects, 4 reviewers with reviews of 5 movies
+        public void InitializeTestData()
         {
             List<MovieReview> temp = new List<MovieReview>();
 
@@ -17,8 +22,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 1,
-                MovieId = 1,
-                ReviewerId = 1
+                Movie = 1,
+                Reviewer = 1
             };
             temp.Add(review_1);
 
@@ -26,8 +31,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 2,
-                MovieId = 2,
-                ReviewerId = 1
+                Movie = 2,
+                Reviewer = 1
             };
             temp.Add(review_2);
 
@@ -35,8 +40,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 3,
-                MovieId = 3,
-                ReviewerId = 1
+                Movie = 3,
+                Reviewer = 1
             };
             temp.Add(review_3);
 
@@ -44,8 +49,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 4,
-                MovieId = 4,
-                ReviewerId = 1
+                Movie = 4,
+                Reviewer = 1
             };
             temp.Add(review_4);
 
@@ -53,8 +58,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 5,
-                MovieId = 5,
-                ReviewerId = 1
+                Movie = 5,
+                Reviewer = 1
             };
             temp.Add(review_5);
 
@@ -62,8 +67,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 5,
-                MovieId = 1,
-                ReviewerId = 2
+                Movie = 1,
+                Reviewer = 2
             };
             temp.Add(review_6);
 
@@ -71,8 +76,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 4,
-                MovieId = 2,
-                ReviewerId = 2
+                Movie = 2,
+                Reviewer = 2
             };
             temp.Add(review_7);
 
@@ -80,8 +85,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 3,
-                MovieId = 3,
-                ReviewerId = 2
+                Movie = 3,
+                Reviewer = 2
             };
             temp.Add(review_8);
 
@@ -89,8 +94,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 2,
-                MovieId = 4,
-                ReviewerId = 2
+                Movie = 4,
+                Reviewer = 2
             };
             temp.Add(review_9);
 
@@ -98,8 +103,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 1,
-                MovieId = 5,
-                ReviewerId = 2
+                Movie = 5,
+                Reviewer = 2
             };
             temp.Add(review_10);
 
@@ -107,8 +112,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 3,
-                MovieId = 1,
-                ReviewerId = 3
+                Movie = 1,
+                Reviewer = 3
             };
             temp.Add(review_11);
 
@@ -116,8 +121,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 2,
-                MovieId = 2,
-                ReviewerId = 3
+                Movie = 2,
+                Reviewer = 3
             };
             temp.Add(review_12);
 
@@ -125,8 +130,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 1,
-                MovieId = 3,
-                ReviewerId = 3
+                Movie = 3,
+                Reviewer = 3
             };
             temp.Add(review_13);
 
@@ -134,8 +139,8 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 4,
-                MovieId = 4,
-                ReviewerId = 3
+                Movie = 4,
+                Reviewer = 3
             };
             temp.Add(review_14);
 
@@ -143,12 +148,55 @@ namespace MovieReview_Tests
             {
                 Date = DateTime.Parse("01/10/2019"),
                 Grade = 5,
-                MovieId = 5,
-                ReviewerId = 3
+                Movie = 5,
+                Reviewer = 3
             };
             temp.Add(review_15);
 
+            MovieReview review_16 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 4,
+                Movie = 1,
+                Reviewer = 4
+            };
+            temp.Add(review_16);
 
+            MovieReview review_17 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 5,
+                Movie = 2,
+                Reviewer = 4
+            };
+            temp.Add(review_17);
+
+            MovieReview review_18 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 3,
+                Movie = 3,
+                Reviewer = 4
+            };
+            temp.Add(review_18);
+
+            MovieReview review_19 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 2,
+                Movie = 4,
+                Reviewer = 4
+            };
+            temp.Add(review_19);
+
+            MovieReview review_20 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 1,
+                Movie = 5,
+                Reviewer = 4
+            };
+            temp.Add(review_20);
 
             MovieReviews = temp;
         }
