@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MovieRatingLibrary.Entities;
 
-namespace MovieReview_Tests
+namespace MovieRatingLibrary
 {
     public class TestData
     {

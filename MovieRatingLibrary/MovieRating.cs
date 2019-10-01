@@ -5,9 +5,27 @@ namespace MovieRatingLibrary
 {
     public class MovieRating: IMovieRating
     {
+        public List<MovieReview> AllMovieReviews { get; set; }
+
+        public MovieRating()
+        {
+            var data = new TestData();
+            AllMovieReviews = data.MovieReviews;
+        }
+
         public List<MovieReview> AllReviewsFromReviewer(int reviewerId)
         {
-            throw new System.NotImplementedException();
+            List<MovieReview> reviewList = new List<MovieReview>();
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (review.Reviewer == reviewerId)
+                {
+                    reviewList.Add(review);
+                }
+            }
+
+            return reviewList;
         }
 
         public double AverageRatingFromReviewer(int reviewerId)

@@ -19,5 +19,15 @@ namespace MovieReview_Tests
             Assert.AreEqual(0,list.Count);
         }
 
+        [TestMethod]
+        public void Test_AllReviewsFromReviewer()
+        {
+            var mr = new MovieRating();
+
+            int numberOfReviews = mr.AllReviewsFromReviewer(1).Count;
+            
+            Assert.AreEqual(5,numberOfReviews);
+        }
+
     }
 }
