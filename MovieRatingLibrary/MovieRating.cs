@@ -4,7 +4,7 @@ namespace MovieRatingLibrary
 {
     public class MovieRating: IMovieRating
     {
-        public List<object> AllReviewsFromReviewer(int reviewerId)
+        public List<MovieRating> AllReviewsFromReviewer(int reviewerId)
         {
             throw new System.NotImplementedException();
         }
