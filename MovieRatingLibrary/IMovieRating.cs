@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using MovieRatingLibrary.Entities;
 
 namespace MovieRatingLibrary
 {
     public interface IMovieRating
     {
         //1. On input N, what are the number of reviews from reviewer N?
-        List<Object> AllReviewsFromReviewer(int reviewerId);
+        List<MovieReview> AllReviewsFromReviewer(int reviewerId);
 
         //2. On input N, what is the average rate that reviewer N had given?
         double AverageRatingFromReviewer(int reviewerId);
