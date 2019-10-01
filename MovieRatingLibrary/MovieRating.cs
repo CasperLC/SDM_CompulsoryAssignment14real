@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using MovieRatingLibrary.Entities;
 
 namespace MovieRatingLibrary
 {
     public class MovieRating: IMovieRating
     {
-        public List<MovieRating> AllReviewsFromReviewer(int reviewerId)
+        public List<MovieReview> AllReviewsFromReviewer(int reviewerId)
         {
             throw new System.NotImplementedException();
         }
