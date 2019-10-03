@@ -198,6 +198,15 @@ namespace MovieRatingLibrary
             };
             temp.Add(review_20);
 
+            MovieReview review_21 = new MovieReview()
+            {
+                Date = DateTime.Parse("01/10/2019"),
+                Grade = 5,
+                Movie = 5,
+                Reviewer = 4
+            };
+            temp.Add(review_21);
+
             MovieReviews = temp;
         }
 

@@ -19,7 +19,7 @@ namespace MovieRatingLibrary
         int HowManyReviewsOfMovie(int movieId);
 
         //5. On input N, what is the average rate the movie N had received?
-        int AverageRatingMovieReceived(int movieId);
+        double AverageRatingMovieReceived(int movieId);
 
         //6. On input N and G, how many times had movie N received grade G?
         int TimesMovieReceivedGrade(int movieId, int grade);
@@ -31,14 +31,14 @@ namespace MovieRatingLibrary
         int ReviewerWithMostReviews();
 
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
-        List<int> TopNofMovies(int grade);
+        List<int> TopNofMovies(int numberOfMovies);
 
         //10. On input N, what are the movies that reviewer N has reviewed? The list should
         //be sorted decreasing by rate first, and date secondly.
-        List<int> MoviesReviewedByN(int reviewerId);
+        List<MovieReview> MoviesReviewedByN(int reviewerId);
 
         //11. On input N, what are the reviewers that have reviewed movie N? The list
         //should be sorted decreasing by rate first, and date secondly.
-        List<int> ReviewersThatReviewedMovie(int movieId);
+        List<MovieReview> ReviewersThatReviewedMovie(int movieId);
     }
 }

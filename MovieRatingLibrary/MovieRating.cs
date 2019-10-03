@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MovieRatingLibrary.Entities;
 
 namespace MovieRatingLibrary
@@ -11,6 +12,12 @@ namespace MovieRatingLibrary
         {
             var data = new TestData();
             AllMovieReviews = data.MovieReviews;
+        }
+
+
+        public MovieRating(List<MovieReview> reviewList)
+        {
+            AllMovieReviews = reviewList;
         }
 
         public List<MovieReview> AllReviewsFromReviewer(int reviewerId)
@@ -30,52 +37,208 @@ namespace MovieRatingLibrary
 
         public double AverageRatingFromReviewer(int reviewerId)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+            double average = 0;
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (review.Reviewer == reviewerId)
+                {
+                    average += review.Grade;
+                    count++;
+                }
+            }
+
+            average = average / count;
+
+            return average;
+
         }
 
         public int TimesReviewerHasGivenGrade(int reviewerId, int grade)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (reviewerId == review.Reviewer && grade == review.Grade)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         public int HowManyReviewsOfMovie(int movieId)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (movieId == review.Movie)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
-        public int AverageRatingMovieReceived(int movieId)
+        public double AverageRatingMovieReceived(int movieId)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+            double average = 0;
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (review.Movie == movieId)
+                {
+                    average += review.Grade;
+                    count++;
+                }
+            }
+
+            average = average / count;
+
+            return average;
         }
 
         public int TimesMovieReceivedGrade(int movieId, int grade)
         {
-            throw new System.NotImplementedException();
+            int count = 0;
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (movieId == review.Movie && grade == review.Grade)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         public int MovieWithMostTopRates()
         {
-            throw new System.NotImplementedException();
+            int curretnTopRate = 0;
+            int count = 0;
+            int currentTopCount = 0;
+            int movie = 1;
+            for (int i = 0; i < AllMovieReviews.Count; i++)
+            {
+                foreach (var review in AllMovieReviews)
+                {
+                    if (review.Movie == movie && review.Grade == 5)
+                    {
+                        count++;
+                    }
+                }
+
+                if (currentTopCount < count)
+                {
+                    currentTopCount = count;
+                    curretnTopRate = movie;
+                }
+
+                movie++;
+            }
+
+            return curretnTopRate;
         }
 
         public int ReviewerWithMostReviews()
         {
-            throw new System.NotImplementedException();
+            int topCount = 0;
+            int count = 0;
+            int topReviewer = -1;
+
+            foreach (var reviewer in AllMovieReviews.Select(r => r.Reviewer).Distinct())
+            {
+                foreach (var review in AllMovieReviews)
+                {
+                    if (review.Reviewer == reviewer)
+                    {
+                        count++;
+                    }
+                }
+
+                if (topCount < count)
+                {
+                    topCount = count;
+                    topReviewer = reviewer;
+                }
+
+                count = 0;
+            }
+
+            return topReviewer;
+
         }
 
-        public List<int> TopNofMovies(int grade)
+        public List<int> TopNofMovies(int numberOfMovies)
         {
-            throw new System.NotImplementedException();
+            var temp = new List<int>();
+            var localAllMovieReviews = AllMovieReviews.Select(m => m.Movie).Distinct().ToList();
+            var movieAverage = -1.0;
+            var topMovie = -1;
+            var currentTop = -1.0;
+            for (int i = 0; i < numberOfMovies; i++)
+            {
+                foreach (var movie in localAllMovieReviews)
+                {
+                    movieAverage = AverageRatingMovieReceived(movie);
+
+                    if (currentTop < movieAverage)
+                    {
+                        currentTop = movieAverage;
+                        topMovie = movie;
+                    }
+                }
+
+                temp.Add(topMovie);
+                currentTop = -1.0;
+                localAllMovieReviews.Remove(topMovie);
+            }
+            
+
+
+
+            return temp;
         }
 
-        public List<int> MoviesReviewedByN(int reviewerId)
+        public List<MovieReview> MoviesReviewedByN(int reviewerId)
         {
-            throw new System.NotImplementedException();
+            var temp = new List<MovieReview>();
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (review.Reviewer == reviewerId)
+                {
+                    temp.Add(review);
+                }
+            }
+
+            temp.Sort();
+
+            return temp;
         }
 
-        public List<int> ReviewersThatReviewedMovie(int movieId)
+        public List<MovieReview> ReviewersThatReviewedMovie(int movieId)
         {
-            throw new System.NotImplementedException();
+            var temp = new List<MovieReview>();
+
+            foreach (var review in AllMovieReviews)
+            {
+                if (review.Movie == movieId)
+                {
+                    temp.Add(review);
+                }
+            }
+
+            temp.Sort();
+
+            return temp;
         }
     }
 }
