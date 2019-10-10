@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using MovieRatingLibrary.Entities;
 
@@ -121,11 +122,48 @@ namespace MovieRatingLibrary
 
         public int MovieWithMostTopRates()
         {
+            List<MovieReview> temp = new List<MovieReview>();
+            temp.AddRange(AllMovieReviews);
             int curretnTopRate = 0;
             int count = 0;
             int currentTopCount = 0;
             int movie = 1;
-            for (int i = 0; i < AllMovieReviews.Count; i++)
+            foreach (var reviews in AllMovieReviews)
+            {
+                if (reviews.Grade < 5)
+                {
+                    temp.Remove(reviews);
+                }
+            }
+
+            Dictionary<int, int> candidates = new Dictionary<int, int>();
+            for (int i = 0; i < temp.Count; i++)
+            {
+                if (!candidates.ContainsKey(temp[i].Movie))
+                {
+                    candidates[temp[i].Movie] = 1;
+                }
+                else
+                {
+                    candidates[temp[i].Movie]++;
+                }
+            }
+
+            count = 0;
+            movie = -1;
+            foreach (KeyValuePair<int, int> kv in candidates)
+            {
+                if (kv.Value > count)
+                {
+                    count = kv.Value;
+                    movie = kv.Key;
+                }
+            }
+
+            return movie;
+
+
+            /*for (int i = 0; i < AllMovieReviews.Count; i++)
             {
                 foreach (var review in AllMovieReviews)
                 {
@@ -144,7 +182,7 @@ namespace MovieRatingLibrary
                 movie++;
             }
 
-            return curretnTopRate;
+            return curretnTopRate;*/
         }
 
         public int ReviewerWithMostReviews()

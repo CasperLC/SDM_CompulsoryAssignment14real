@@ -10,11 +10,12 @@ namespace MovieReview_Tests
     [TestClass]
     public class UnitTest1
     {
+        public List<MovieReview> MemoryDB = new TestData().MovieReviews;
 
         [TestMethod]
         public void TestIfNoReviews()
         {
-            IMovieRating mr = new MovieRating();
+            IMovieRating mr = new MovieRating(MemoryDB);
             List<MovieReview> list = mr.AllReviewsFromReviewer(-1);
             Assert.AreEqual(0,list.Count);
         }
@@ -22,7 +23,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_AllReviewsFromReviewer()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             int numberOfReviews = mr.AllReviewsFromReviewer(1).Count;
             
@@ -32,7 +33,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_AverageRatingFromReviewer()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             var actualAverage = mr.AverageRatingFromReviewer(2);
 
@@ -44,7 +45,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_TimesReviewerHasGivenGrade()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             var actual = mr.TimesReviewerHasGivenGrade(2, 4);
 
@@ -56,7 +57,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_HowManyReviewsOfMovie()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             var actual = mr.HowManyReviewsOfMovie(1);
 
@@ -70,7 +71,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_AverageRatingMovieReceived()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             double actual = mr.AverageRatingMovieReceived(1);
 
@@ -82,7 +83,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_TimesMovieReceivedGrade()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             int actual = mr.TimesMovieReceivedGrade(1, 1);
 
@@ -95,7 +96,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_MovieWithMostTopRates()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             int actual = mr.MovieWithMostTopRates();
 
@@ -107,7 +108,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_ReviewerWithMostReviews()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             int actual = mr.ReviewerWithMostReviews();
 
@@ -119,7 +120,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_TopNofMovies()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
 
             var actual = mr.TopNofMovies(1);
 
@@ -131,7 +132,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_MoviesReviewedByN()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
             var actual = mr.MoviesReviewedByN(1);
 
             Assert.IsTrue(actual[0].Grade > actual[1].Grade);
@@ -142,7 +143,7 @@ namespace MovieReview_Tests
         [TestMethod]
         public void Test_ReviewersThatReviewedMovie()
         {
-            var mr = new MovieRating();
+            var mr = new MovieRating(MemoryDB);
             var actual = mr.ReviewersThatReviewedMovie(1);
 
             Assert.IsTrue(actual[0].Grade > actual[1].Grade);
