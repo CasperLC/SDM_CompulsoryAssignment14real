@@ -8,7 +8,7 @@ namespace ConsoleMovieReview
 {
     public class Program
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             JsonReader js = new JsonReader();
             List<MovieReview> list = js.Readthejson("C:/Users/Melchertsen/Downloads/fuck.json");
@@ -17,6 +17,6 @@ namespace ConsoleMovieReview
                 Console.WriteLine(dab.Date);
             }
             Console.WriteLine("hello world");
-        }
+        }*/
     }
 }
