@@ -7,7 +7,7 @@ using MovieRatingLibrary.Entities;
 
 namespace MovieReview_Tests
 {
-    [TestClass]
+    /*[TestClass]
     public class PerformanceTests
     {
         public static List<MovieReview> JsonReaderList;
@@ -164,5 +164,5 @@ namespace MovieReview_Tests
             double time = sw.ElapsedMilliseconds / 1000.0;
             Assert.IsTrue(time < 4.0);
         }
-    }
+    }*/
 }
